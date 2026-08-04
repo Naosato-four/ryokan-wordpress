@@ -1,0 +1,95 @@
+{
+  "keion": {
+    "roomName": "渓音",
+    "roomKana": "けいおん",
+    "roomType": "特別室",
+    "heroImage": "keion-top.jpg",
+    "conceptText": "山間を流れる清流のせせらぎが聞こえてくる客室。<br>窓辺から広がる自然を眺めながら、川音を思わせる静けさに包まれる癒やしの空間。<br>季節を問わず、心をほどく滞在を楽しめます。",
+    "layout": "和洋室（和室10畳 ＋ ツインベッド）",
+    "capacity": "2〜4名様",
+    "floorPlan": "madori_keion.png",
+    "roomImages": [
+      { "src": "keionn.png", "alt": "特別室 渓音 ベットルーム" },
+      { "src": "keion2.png", "alt": "特別室 渓音 客室全景" },
+      { "src": "amenityslide.png", "alt": "特別室 渓音 アメニティ" }
+    ],
+    "otherRooms": [
+      {
+        "id": 2,
+        "name": "夕霞",
+        "kana": "ゆうがすみ",
+        "url": "/room-detail/?room=yugasumi",
+        "src": "yuugasumi1.png"
+      },
+      {
+        "id": 3,
+        "name": "星待",
+        "kana": "ほしまち",
+        "url": "/room-detail/?room=hoshimati",
+        "src": "hosimachi1.png"
+      }
+    ]
+  },
+  "yugasumi": {
+    "roomName": "夕霞",
+    "roomKana": "ゆうがすみ",
+    "roomType": "特別室",
+    "heroImage": "yugasumi-top.jpg",
+    "conceptText": "夕暮れ時に美しい茜色の空に包まれる客室。<br>贅沢なひとときを過ごすための特別な空間をご用意いたしました。<br>心ゆくまで旅の情緒をお楽しみください。",
+    "layout": "和洋室（和室10畳 ＋ ツインベッド）",
+    "capacity": "2-4名様",
+    "floorPlan": "madori_yugasumi.png",
+    "roomImages": [
+      { "src": "yuugasumi1.png", "alt": "特別室 夕霞 ベットルーム" },
+      { "src": "yuugasumi2.png", "alt": "特別室 夕霞 客室全景" },
+      { "src": "amenityslide.png", "alt": "特別室 夕霞 アメニティ" }
+    ],
+    "otherRooms": [
+      {
+        "id": 1,
+        "name": "渓音",
+        "kana": "けいおん",
+        "url": "/room-detail/?room=keion",
+        "src": "keionn.png"
+      },
+      {
+        "id": 3,
+        "name": "星待",
+        "kana": "ほしまち",
+        "url": "/room-detail/?room=hoshimati",
+        "src": "hosimachi1.png"
+      }
+    ]
+  },
+  "hoshimati": {
+    "roomName": "星待",
+    "roomKana": "ほしまち",
+    "roomType": "特別室",
+    "heroImage": "hoshimati-top.jpg",
+    "conceptText": "澄み切った夜空に輝く満天の星を仰ぐ特別な客室。<br>誰にも邪魔されない極上のプライベート空間で、至福のひとときを。<br>静寂が紡ぐ思い出の1ページをここ琥珀で。",
+    "layout": "和洋室（和室10畳 ＋ ツインベッド）",
+    "capacity": "2-4名様",
+    "floorPlan": "madori_hoshimati.png",
+    "roomImages": [
+      { "src": "hosimachi1.png", "alt": "特別室 星待 ベットルーム" },
+      { "src": "hosimachi2.png", "alt": "特別室 星待 客室全景" },
+      { "src": "amenityslide.png", "alt": "特別室 星待 アメニティ" }
+    ],
+    "otherRooms": [
+      {
+        "id": 1,
+        "name": "渓音",
+        "kana": "けいおん",
+        "url": "/room-detail/?room=keion",
+        "src": "keionn.png"
+      },
+      {
+        "id": 2,
+        "name": "夕霞",
+        "kana": "ゆうがすみ",
+        "url": "/room-detail/?room=yugasumi",
+        "src": "yuugasumi1.png"
+      }
+    ]
+  }
+}
