@@ -1,0 +1,351 @@
+@charset "UTF-8";
+
+/* ==========================================
+  下層ページ ヒーローエリア
+   ========================================== */
+.access-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url(../img/access-mv.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.access-hero-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 5);
+}
+
+/* ==========================================
+  共通セクションヘッダー
+   ========================================== */
+.access-section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.access-section-title {
+  font-size: 26px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* ==========================================
+  1. 専用シャトルバス「冬霞号」ご利用の推奨 パート
+   ========================================== */
+.access-info-section {
+  padding-bottom: 90px; /* 最後の余白調整 */
+}
+
+.access-info-card {
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  padding: 60px 80px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.access-info-title {
+  font-size: 24px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-red);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.access-info-subtitle {
+  font-size: 14px;
+  color: var(--ryokan-red);
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 35px;
+  font-weight: 700;
+}
+
+.access-info-content {
+  font-size: 14px;
+  line-height: 2.3;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.access-info-content p {
+  margin-bottom: 2rem;
+}
+
+.access-info-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+  2. 冬霞号（シャトルバス）/時刻表 パート
+   ========================================== */
+.access-bus-section {
+  padding-bottom: 120px;
+}
+
+.access-bus-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 26, 0.85);
+  font-weight: 500;
+}
+.access-badge-box {
+  text-align: left;
+}
+.access-badge {
+  font-size: 11px;
+  background-color: var(--ryokan-gold);
+  color: var(--ryokan-black);
+  padding: 4px 8px;
+  margin-right: 0.8rem;
+  font-weight: 700;
+}
+
+.access-bus-direction {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-red);
+  border-bottom: 1px solid var(--ryokan-gold);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.access-bus-dir-sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.access-bus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.access-bus-card {
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* .access-bus-card:hover {
+  border-color: var(--ryokan-gold);
+} */
+
+.access-bus-card-header {
+  background-color: var(--ryokan-gray-light);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.access-bus-no {
+  font-size: 14px;
+  background-color: var(--ryokan-black);
+  color: var(--ryokan-white);
+  padding: 3px 10px;
+  letter-spacing: 0.1em;
+}
+
+.access-timeline {
+  display: flex;
+  align-items: center;
+}
+
+.access-time {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ryokan-black);
+  letter-spacing: 0.05em;
+}
+
+.access-place {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.6);
+  margin-left: 2px;
+}
+
+.access-arrow {
+  color: var(--ryokan-gold);
+  font-size: 12px;
+}
+
+.access-bus-card-body {
+  padding: 20px;
+}
+
+.access-recommend-title {
+  font-size: 12px;
+  color: var(--ryokan-red);
+  font-weight: 800;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+}
+
+.access-recommend-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.85);
+  margin: 0;
+}
+
+/* ==========================================
+  3. Google Map パート
+   ========================================== */
+.access-map-section {
+  padding-bottom: 50px; /* 均等な縦の間隔 */
+}
+
+.access-map-wrapper {
+  background-color: var(--ryokan-gray-light);
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  margin-bottom: 5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+  4. その他の交通手段 パート
+   ========================================== */
+
+.access-other-box {
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  padding: 30px;
+  margin-bottom: 120px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.access-other-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ryokan-red);
+  border-bottom: 1px solid var(--ryokan-gold);
+  padding-bottom: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+
+.access-other-text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ryokan-black);
+  margin: 0;
+}
+
+/* ==========================================
+  スクロール連動フェードイン
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+  レスポンシブ微調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .access-info-card {
+    padding: 45px 40px;
+  }
+}
+
+@media (max-width: 750px) {
+  .access-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .access-hero-title {
+    font-size: 24px;
+  }
+  .access-section-header {
+    margin-bottom: 20px;
+  }
+  .access-section-title {
+    font-size: 19px;
+  }
+  .access-bus-section {
+    padding-bottom: 60px; /* 均等な縦の間隔調整 */
+  }
+  .access-bus-summary {
+    display: grid;
+  }
+  .access-bus-direction {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .access-bus-card-header {
+    padding: 12px 15px;
+  }
+  .access-time {
+    font-size: 15px;
+  }
+  .access-section-subtitle {
+    font-size: 0.8rem;
+  }
+  .access-map-section {
+    padding: 0;
+  }
+  .access-map-wrapper {
+    aspect-ratio: 16/9; /* スマホやタブレットでは一般的なアスペクト比に変更 */
+  }
+  .access-map-other-box {
+    padding: 20px 15px;
+  }
+  .access-info-section {
+    padding-bottom: 60px;
+  }
+  .access-info-card {
+    padding: 35px 20px;
+  }
+  .access-info-title {
+    font-size: 16px;
+  }
+  .access-info-subtitle {
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+  .access-info-content {
+    font-size: 13px;
+    line-height: 2.1;
+  }
+  .access-info-content p {
+    margin-bottom: 1.5rem;
+  }
+  .access-other-box {
+    margin-bottom: 60px;
+  }
+}
