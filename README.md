@@ -3,10 +3,11 @@
 
 ## 概要
 
-架空の旅館をテーマに制作したWebサイトです。
+チーム制作で架空の旅館をテーマに制作したWebサイトです。
 
-デザインからHTML/CSSによるコーディングを行い、その後WordPress化を実施しました。
+デザインからHTML/CSSによるコーディングをAIを使用して行い、その後WordPress化を実施しました。
 静的HTMLで制作したサイトをWordPressテーマへ移行し、管理画面から更新できる構成にしています。
+私は主にサイト全体のWordpress化を担当しました。
 
 ## 使用技術
 
@@ -15,6 +16,10 @@
 - JavaScript
 - PHP
 - WordPress
+- Google AI Studio
+- ChatGPT
+- Google Gemini
+- Copilot
 
 ## 実装内容
 
