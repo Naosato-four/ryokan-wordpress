@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+/* ==========================================
+  complete.html 専用スタイル
+   ========================================== */
+
+.complete-page-wrapper {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  font-family: var(--ryokan-font-serif);
+}
+
+/* 進行状況インジケーター（ステップバー） */
+.complete-step-bar {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  opacity: 0.6;
+}
+
+.complete-step-item {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.complete-step-active {
+  font-weight: 700;
+  color: var(--ryokan-red);
+  opacity: 1;
+  border-bottom: 1px solid var(--ryokan-red);
+}
+
+.complete-step-separator {
+  font-size: 11px;
+  color: var(--ryokan-gold);
+  padding: 0 15px;
+}
+
+/* 完了メッセージカード外枠 */
+.complete-card {
+  max-width: 750px;
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* チェックマークアイコン */
+.complete-icon-wrap {
+  font-size: 64px;
+  color: var(--ryokan-gold);
+}
+
+/* メインタイトル */
+.complete-main-title {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+}
+
+/* 説明テキスト */
+.complete-message-text {
+  font-size: 15px;
+  line-height: 2;
+  color: #444444;
+}
+
+/* 注意事項等を入れる内側のボックス */
+.complete-info-box {
+  background-color: rgba(
+    253,
+    245,
+    222,
+    0.3
+  ); /* 琥珀色ベースのうすい和紙風背景 */
+  border-left: 3px solid var(--ryokan-gold);
+  max-width: 620px;
+}
+
+.complete-info-box p {
+  font-size: 14px;
+  color: var(--ryokan-black);
+}
+
+.complete-notice-list {
+  margin-top: 8px;
+}
+
+.complete-notice-list li {
+  font-size: 13.5px;
+  color: #555555;
+  line-height: 1.7;
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+/* トップへ戻るボタン（エンジ色ベース） */
+.complete-home-button {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  padding: 14px 50px;
+  border-radius: 0;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 4px 15px rgba(135, 25, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.complete-home-button:hover {
+  background-color: #611200;
+  color: var(--ryokan-white);
+  box-shadow: 0 6px 20px rgba(135, 25, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .complete-card {
+    padding: 35px 20px !important;
+  }
+  .complete-main-title {
+    font-size: 20px;
+  }
+  .complete-message-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .complete-home-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+  }
+}

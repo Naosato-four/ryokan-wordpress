@@ -1,0 +1,588 @@
+@charset "UTF-8";
+
+/* ==========================================
+   TOPの画像・ヒーローエリア
+   ========================================== */
+.bg-gara {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* 💡 モダンHTMLのheader構造に合わせて擬似要素の対象を調整 */
+.room-detail-hero-inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.room-detail-hero {
+  position: relative;
+  background-color: var(--ryokan-gray-light);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+/* ==========================================
+   2. 客室メイン紹介エリア（手動スライドショー）
+   ========================================== */
+.room-detail-intro-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+/* 手動スライドショースタイル */
+.room-detail-slider-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+}
+
+.room-detail-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.room-detail-slider-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.6s ease-in-out;
+  margin: 0; /* figureタグのデフォルト余白をリセット */
+}
+
+.room-detail-slider-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.room-detail-slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-detail-slider-image-placeholder {
+  background-color: var(--ryokan-gray-light);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 左右操作ボタン */
+.room-detail-slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(26, 26, 26, 0.5);
+  border: none;
+  color: var(--ryokan-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.room-detail-slider-nav:hover {
+  background-color: var(--ryokan-red);
+}
+
+.room-detail-slider-nav.prev {
+  left: 15px;
+}
+
+.room-detail-slider-nav.next {
+  right: 15px;
+}
+
+/* インジケータードット */
+.room-detail-slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.room-detail-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(250, 250, 250, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.room-detail-slider-dot.active {
+  background-color: var(--ryokan-gold);
+}
+
+/* メイン右：テキスト詳細 */
+.room-detail-text-card {
+  padding: 10px 20px;
+}
+
+.room-detail-card-header {
+  border-bottom: 1px solid var(--ryokan-gold);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.room-detail-room-type {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-gold);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.room-detail-room-name {
+  font-size: 26px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--ryokan-black);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.room-detail-room-kana {
+  font-size: 13px;
+  color: rgba(26, 26, 26, 0.5);
+  margin-left: 12px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.room-detail-concept-box {
+  background-color: var(--ryokan-cream);
+  border-left: 3px solid var(--ryokan-gold);
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  padding: 20px 24px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.room-detail-concept-text {
+  font-size: 14.5px;
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin: 0;
+}
+
+.room-detail-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+}
+
+.room-detail-specs li {
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 0;
+  display: flex;
+}
+
+.room-detail-specs li:last-child {
+  border-bottom: none;
+}
+
+.room-detail-spec-label {
+  font-weight: 700;
+  color: var(--ryokan-red);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.room-detail-btn-reserve {
+  display: inline-block;
+  background-color: var(--ryokan-black);
+  color: var(--ryokan-white);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  padding: 14px 45px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.room-detail-btn-reserve:hover {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+}
+
+/* ==========================================
+   3. 客室スペック詳細セクション（間取り・基本情報）
+   ========================================== */
+.room-detail-specs-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.room-detail-floorplan-img-wrap {
+  margin: 0; /* figureのデフォルトマージンをリセット */
+}
+
+.room-detail-info-card {
+  background-color: var(--ryokan-cream);
+  border: 1px solid rgba(221, 188, 117, 0.35);
+  padding: 35px;
+  height: 100%;
+}
+
+.room-detail-info-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  border-bottom: 2px solid var(--ryokan-gold);
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.room-detail-info-group {
+  margin-bottom: 25px;
+}
+
+.room-detail-info-group:last-child {
+  margin-bottom: 0;
+}
+
+.room-detail-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  padding: 2px 10px;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.room-detail-info-table th {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ryokan-black);
+  padding: 6px 0;
+  width: 140px;
+}
+
+.room-detail-info-table td {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.85);
+  padding: 6px 0;
+}
+
+.room-detail-free-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.room-detail-free-services li {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ryokan-black);
+  display: flex;
+  align-items: center;
+}
+
+.room-detail-service-icon {
+  color: var(--ryokan-gold);
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* ==========================================
+   4. 備品・アメニティ詳細セクション
+   ========================================== */
+.room-detail-amenity-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.room-detail-amenity-title {
+  font-size: 24px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid var(--ryokan-gold);
+  padding-bottom: 4px;
+}
+
+.room-detail-amenity-intro-text {
+  font-size: 14px;
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 26, 0.8);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* 備品カードスタイル */
+.room-detail-amenity-card {
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  padding: 24px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.room-detail-amenity-card:hover {
+  border-color: var(--ryokan-gold);
+  transform: translateY(-2px);
+}
+
+.room-detail-amenity-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.room-detail-amenity-icon-wrap {
+  width: 32px;
+  height: 32px;
+  background-color: var(--ryokan-cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ryokan-red);
+  font-size: 14px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.room-detail-amenity-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin: 0;
+}
+
+.room-detail-amenity-item-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.75);
+  margin: 0;
+}
+
+/* ==========================================
+   5. 他の客室へのリンクエリア（メインを邪魔しないサイズ感）
+   ========================================== */
+.room-detail-other-section {
+  padding-bottom: 120px;
+}
+
+.room-detail-other-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.room-detail-other-title {
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.room-detail-other-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: var(--ryokan-gold);
+}
+
+.room-detail-other-card {
+  display: block;
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.room-detail-other-card:hover {
+  border-color: var(--ryokan-gold);
+  transform: translateY(-3px);
+}
+
+.room-detail-other-image-box {
+  background-color: var(--ryokan-gray-light);
+  overflow: hidden;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.15);
+  margin: 0;
+}
+
+.room-detail-other-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-detail-other-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.room-detail-other-room-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--ryokan-black);
+}
+
+.room-detail-other-room-kana {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.room-detail-other-link-text {
+  font-size: 11px;
+  color: var(--ryokan-gold);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* ==========================================
+   スクロール連動フェードイン
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   レスポンシブ微調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .room-detail-slider-container {
+    height: 380px;
+  }
+  .room-detail-info-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 750px) {
+  .room-detail-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .room-detail-intro-section,
+  .room-detail-specs-section,
+  .room-detail-amenity-section,
+  .room-detail-other-section {
+    padding-bottom: 60px; /* 均等な縦の間隔調整 */
+  }
+  .room-detail-slider-container {
+    height: 250px;
+    margin-bottom: 25px;
+  }
+  .room-detail-text-card {
+    padding: 0 10px;
+  }
+  .room-detail-room-name {
+    font-size: 21px;
+  }
+  .room-detail-concept-box {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .room-detail-concept-text {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .room-detail-btn-reserve {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+  .room-detail-free-services {
+    grid-template-columns: 1fr;
+  }
+  .room-detail-amenity-title {
+    font-size: 20px;
+  }
+  .room-detail-amenity-intro-text {
+    font-size: 13px;
+    line-height: 2;
+  }
+  .room-detail-other-image-box {
+    height: 120px;
+  }
+  .room-detail-other-info {
+    padding: 10px;
+  }
+  .room-detail-other-room-name {
+    font-size: 13px;
+  }
+}

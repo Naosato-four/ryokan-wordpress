@@ -1,0 +1,374 @@
+/* ==========================================
+   CSS変数の定義 (style.cssの変数名プレフィックスと完全に統一)
+   ========================================== */
+:root {
+  --ryokan-gold: #ddbc75;
+  --ryokan-cream: #fdf5de;
+  --ryokan-red: #871900;
+  --ryokan-white: #fafafa;
+  --ryokan-black: #1a1a1a;
+  --ryokan-gray-light: #efefef;
+  --ryokan-gray-medium: #d9d9d9;
+  --ryokan-font-serif: "Noto Serif JP", serif;
+}
+
+/* ==========================================
+   全体基本設定
+   ========================================== */
+body.food-body {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  font-family: var(--ryokan-font-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   レスポンシブ幅制限の定義
+   ========================================== */
+.food-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 375px) {
+  .food-container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 750px) {
+  .food-container {
+    max-width: 710px;
+  }
+}
+@media (min-width: 1000px) {
+  .food-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .food-container {
+    max-width: 1200px;
+  }
+}
+
+/* ==========================================
+   女将ページ専用スタイル (okami.css)
+   ========================================== */
+.okami-body {
+  font-family: var(--ryokan-font-serif), "Noto Serif JP", serif;
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* --- ヒーローエリア --- */
+.okami-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url(../img/okamikuma.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.okami-hero-title {
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 5);
+}
+
+/* --- 1. 女将紹介セクション (円形枠) --- */
+.okami-intro-section {
+  padding-top: 60px; /* 💡 セクション外側の上の余白を少し広げてゆったりと */
+  padding-bottom: 70px; /* 💡 次のセクションとの間隔をしっかり確保 */
+}
+
+.okami-intro-heading {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.3);
+  padding-bottom: 15px; /* 💡 線と文字の間にも少し余白を作るとさらに上品に */
+}
+
+.okami-intro-text {
+  font-size: 14.5px;
+  line-height: 2.2;
+  letter-spacing: 0.05em;
+}
+
+/* --- 💡 ここを大幅に調整しました --- */
+.okami-profile-circle {
+  position: relative;
+  width: 100%;
+
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.okami-profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 💡 これで縦横比を維持したまま、隙間なく枠いっぱいに画像が広がります */
+  display: block;
+}
+
+/* 占うボタンのデザイン */
+.btn-okami-fortune {
+  background: var(--ryokan-cream);
+  color: #ddbc75;
+  border: 1px solid #ddbc75;
+  padding: 12px 30px;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.btn-okami-fortune:hover {
+  background: #ddbc75;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(221, 188, 117, 0.3);
+}
+
+/* ポップアップの背景（画面全体を暗くする） */
+.fortune-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* 背景をオシャレにぼかす */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+/* ポップアップが開いた時のクラス */
+.fortune-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* お告げが書かれたカード */
+.fortune-card {
+  background: #fff;
+  padding: 40px 30px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-top: 4px solid #ddbc75;
+}
+.fortune-title {
+  font-size: 16px;
+  color: #ddbc75;
+  margin-bottom: 25px;
+  letter-spacing: 0.1em;
+}
+.fortune-body h4 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.fortune-body p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* 閉じるボタン */
+.btn-fortune-close {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #999;
+  color: #999;
+  font-size: 12px;
+  margin-top: 30px;
+  padding: 2px 10px;
+}
+
+/* --- 2. 女将の挨拶・ギャラリーセクション --- */
+.okami-greet-section {
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+
+.okami-greet-text-box p {
+  font-size: 14px;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+/* カリグラフィー作品のコラージュ風変則配置 */
+.okami-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 520px; /* PC時のエリア高さを担保 */
+}
+
+.gallery-item {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03) translateY(-3px);
+  z-index: 10 !important;
+}
+
+/* 各画像の配置指定（スクリーンショットのレイアウトを再現） */
+.item-main {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 55%;
+  height: 250px;
+  z-index: 2;
+}
+
+.item-main img {
+  object-position: top;
+}
+
+.item-sub1 {
+  position: absolute;
+  top: 240px;
+  right: -30px;
+  width: 45%;
+  height: 250px;
+  z-index: 4;
+}
+
+.item-sub1 img {
+  object-position: top;
+}
+
+.item-sub2 {
+  bottom: 80px;
+  left: 5%;
+  width: 50%;
+  height: 250px;
+  z-index: 3;
+}
+
+.item-sub3 {
+  position: absolute;
+  bottom: -200px;
+  right: 40%;
+  width: 35%;
+  height: 300px;
+  z-index: 5;
+}
+
+.item-sub3 img {
+  object-position: top;
+}
+
+/* --- スクロールアニメーション用 --- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- レスポンシブ (スマホ・タブレット) --- */
+@media (max-width: 991px) {
+  .okami-gallery-container {
+    height: 440px;
+  }
+}
+
+@media (max-width: 767px) {
+  .okami-hero {
+    height: 240px;
+    padding-left: 20px;
+    margin-bottom: 50px;
+  }
+  .okami-hero-title {
+    font-size: 24px;
+  }
+  .okami-intro-section {
+    padding-bottom: 50px;
+  }
+  .okami-profile-circle {
+    width: 220px;
+    height: 220px;
+  }
+  .okami-greet-section {
+    padding-bottom: 70px;
+  }
+
+  /* スマホ時は絶対配置を解除して通常のグリッド風に並べる */
+  .okami-gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: auto;
+  }
+  .gallery-item {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+  .item-main {
+    width: 100%;
+    height: 220px;
+  }
+  .item-sub1 {
+    width: calc(50% - 8px);
+    height: 200px;
+  }
+  .item-sub2 {
+    width: calc(50% - 8px);
+    height: 200px;
+  }
+  .item-sub3 {
+    width: 100%;
+    height: 300px;
+  }
+}

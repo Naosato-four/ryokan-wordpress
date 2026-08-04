@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+/* ==========================================
+  温泉 ヒーローエリア（修正版）
+   ========================================== */
+.onsen-hero {
+  /* 背景画像の設定 */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.001)),
+    url("../img/onsenmain.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 280px;
+
+  /* コンテンツ配置用 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* 既存のレイアウト調整 */
+  margin-bottom: 90px;
+}
+
+.onsen-hero-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em; /* 均等中央配置のための調整 */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* ==========================================
+  温泉紹介セクション
+   ========================================== */
+.onsen-list-section {
+  padding-bottom: 120px;
+}
+
+/* 均等な間隔（100px）を空けて綺麗に配置 */
+.onsen-item {
+  margin-bottom: 100px;
+}
+
+.onsen-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 温泉写真枠 (プレースホルダー) */
+.onsen-image-box {
+  background-color: var(--ryokan-gray-light);
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.onsen-image-box::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.onsen-image-box:hover {
+  background-color: var(--ryokan-gray-medium);
+}
+
+.onsen-image-box:hover::before {
+  opacity: 1;
+}
+
+.onsen-image-placeholder-text {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.onsen-img {
+  width: 100%;
+  height: auto;
+}
+.onsen-text-box {
+  padding: 20px 40px;
+}
+
+.onsen-spa-title {
+  font-size: 24px;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  border-bottom: 1px solid var(--ryokan-gold);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.onsen-spa-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: rgba(26, 26, 26, 0.6);
+  margin-left: 8px;
+  font-weight: 300;
+}
+
+/* 効能・概要のデザイン */
+.onsen-effect-area,
+.onsen-desc-area {
+  margin-bottom: 20px;
+}
+
+.onsen-desc-area {
+  margin-bottom: 0;
+}
+
+.onsen-effect-label,
+.onsen-desc-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-white);
+  background-color: var(--ryokan-gold);
+  padding: 3px 10px;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* 概要はRedにして効能（Gold）と視覚的に区別 */
+.onsen-desc-label {
+  background-color: var(--ryokan-red);
+}
+
+.onsen-effect-label {
+  color: var(--ryokan-black);
+}
+
+.onsen-effect-text {
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  color: var(--ryokan-black);
+  font-weight: 700;
+  margin: 0;
+}
+
+.onsen-desc-text {
+  font-size: 13.5px;
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+  color: var(--ryokan-black);
+  margin: 0;
+  text-align: justify;
+}
+
+/* ==========================================
+  スクロール連動アニメーション
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+  レスポンシブ微調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .onsen-image-box {
+    height: 300px;
+  }
+  .onsen-text-box {
+    padding: 15px 20px;
+  }
+  .onsen-item {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 750px) {
+  .onsen-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .onsen-hero-title {
+    font-size: 24px;
+  }
+  .onsen-item {
+    margin-bottom: 60px;
+  }
+  .onsen-image-box {
+    height: 240px;
+    margin-bottom: 25px;
+  }
+  .onsen-text-box {
+    padding: 0 10px;
+  }
+  .onsen-spa-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+  .onsen-effect-text {
+    font-size: 13px;
+  }
+  .onsen-desc-text {
+    font-size: 13px;
+    line-height: 2;
+  }
+}

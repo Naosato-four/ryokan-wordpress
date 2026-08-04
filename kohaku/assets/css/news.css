@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* ページ全体のラッパー */
+.news-page-wrapper {
+  padding-bottom: 100px;
+}
+
+/* タイトルセクション */
+.news-page-hero {
+  padding: 50px 0 50px;
+  background-color: var(--ryokan-cream);
+  border-bottom: 1px solid var(--ryokan-gold);
+  margin-bottom: 60px;
+}
+
+.news-page-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  margin-bottom: 10px;
+  color: var(--ryokan-black);
+}
+
+.news-page-sub-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: var(--ryokan-gold);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+/* お知らせアイテム */
+.news-page-item {
+  margin-bottom: 80px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.news-page-item-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.news-page-date {
+  font-size: 1.1rem;
+  color: var(--ryokan-black);
+  letter-spacing: 0.1em;
+}
+
+.news-page-category {
+  background-color: var(--ryokan-red);
+  color: #fff;
+  padding: 2px 12px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.news-page-item-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid var(--ryokan-gold);
+  line-height: 1.4;
+}
+
+.news-page-item-body {
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+  padding-left: 23px;
+}
+
+/* 区切り線 */
+.news-page-divider {
+  margin-top: 60px;
+  border: 0;
+  border-top: 1px solid var(--ryokan-gray-medium);
+  opacity: 0.5;
+}
+
+/* 画像フレーム（ダミー） */
+.news-page-img-frame {
+  background-color: var(--ryokan-gray-light);
+  border: 1px solid var(--ryokan-gray-medium);
+  padding: 60px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .news-page-main-title {
+    font-size: 2rem;
+  }
+  .news-page-item-title {
+    font-size: 1.3rem;
+  }
+  .news-page-item-body {
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,305 @@
+@charset "UTF-8";
+
+/* ==========================================
+  メインビジュアル
+   ========================================== */
+/* ヒーローセクション全体 */
+.ryokan-hero {
+  position: relative;
+  width: 100%;
+  min-height: 613px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
+  background-color: var(--ryokan-gray-light);
+}
+
+/* 背景画像エリア */
+.hero-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* タイトルより下に配置 */
+}
+
+/* 各スライドの共通設定 */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: fadeSlide 9s infinite;
+}
+
+/* 画像パスとタイミング */
+.slide1 {
+  background-image: url("../img/ryokangaikan.png");
+  animation-delay: 0s;
+}
+.slide2 {
+  background-image: url("../img/taketourou.png");
+  animation-delay: 3s;
+}
+.slide3 {
+  background-image: url("../img/kohaku_daytime.jpg");
+  animation-delay: 6s;
+}
+
+/* フェードアニメーション */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* タイトルエリア */
+.ryokan-hero-inner {
+  position: relative;
+  z-index: 10; /* 画像より前面に表示 */
+  margin-top: -7px;
+}
+
+/* タイトル文字の設定 */
+.ryokan-hero-title-main {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  line-height: 1.9;
+  color: var(--ryokan-white);
+}
+
+/* サブタイトルの設定 */
+.ryokan-hero-title-sub {
+  font-size: 18px;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.7); /* 白文字に合わせて少し調整 */
+  margin-bottom: 24px;
+}
+
+/* 既存のアニメーション設定 */
+.zoomin.is-animated {
+  animation: zoomIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1.1);
+    opacity: 0;
+  } /* 少し大きめから始めても綺麗です */
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* スライド内の画像にも適用 */
+.swiper-slide-active .zoomin {
+  animation: zoomIn 5s ease-out forwards; /* ゆっくりズームさせるなら秒数を長くすると良いです */
+}
+
+/* ==========================================
+  コンセプト領域
+   ========================================== */
+.ryokan-concept {
+  padding: 105px 0;
+  text-align: center;
+}
+
+.ryokan-concept-text {
+  font-size: 18px;
+  line-height: 2.3;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-black);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.ryokan-concept-text p {
+  margin-bottom: 2.5rem;
+}
+
+.ryokan-concept-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+  特徴カード領域 (お部屋、温泉、お食事)
+   ========================================== */
+.ryokan-features {
+  padding-bottom: 120px;
+}
+
+.ryokan-feature-item {
+  margin-bottom: 70px;
+}
+
+.ryokan-feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.ryokan-feature-card {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: relative;
+
+  /* 共通の画像表示ルール（画像自体は個別に設定するため、ここでは画像指定しません） */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 個別の背景画像指定 */
+.ryokan-feature-item:nth-child(1) .ryokan-feature-card {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../img/room1.jpg");
+}
+.ryokan-feature-item:nth-child(2) .ryokan-feature-card {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../img/yukimiburo2_daytime.png");
+}
+.ryokan-feature-item:nth-child(3) .ryokan-feature-card {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../img/moabeta.png");
+}
+
+.ryokan-feature-card:hover {
+  background-color: var(--ryokan-gray-medium);
+}
+
+.ryokan-feature-card:hover::before {
+  opacity: 1;
+}
+
+.ryokan-feature-title {
+  font-size: 24px;
+  letter-spacing: 0.4em;
+  color: var(--ryokan-white);
+  font-weight: 500;
+  transition: letter-spacing 0.5s ease;
+}
+
+.ryokan-feature-card:hover .ryokan-feature-title {
+  letter-spacing: 0.5em;
+}
+
+/* ==========================================
+  お知らせ
+   ========================================== */
+.ryokan-news {
+  background-color: var(--ryokan-gray-light);
+  padding: 90px 0;
+}
+
+.ryokan-news-title {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 18px;
+}
+
+.ryokan-news-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 1px;
+  background-color: var(--ryokan-gold);
+}
+
+.ryokan-news-list {
+  max-width: 640px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.ryokan-news-item {
+  font-size: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+}
+
+.ryokan-news-item:last-child {
+  border-bottom: none;
+}
+
+.ryokan-news-marker {
+  width: 16px;
+  flex-shrink: 0;
+  text-align: center;
+  color: var(--ryokan-gold);
+}
+
+.ryokan-news-text {
+  letter-spacing: 0.05em;
+}
+
+.ryokan-news-date {
+  margin-right: 16px;
+}
+
+.ryokan-news-more {
+  max-width: 640px;
+  margin: 25px auto 0;
+  text-align: right;
+}
+
+.ryokan-news-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  letter-spacing: 0.15em;
+
+  color: var(--ryokan-black);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.ryokan-news-link:hover {
+  color: var(--ryokan-gold);
+}
+
+/* レスポンシブ対応用 */
+@media (max-width: 768px) {
+  .ryokan-news-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

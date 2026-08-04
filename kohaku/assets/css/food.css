@@ -1,0 +1,565 @@
+@charset "UTF-8";
+
+/* ==========================================
+  お食事 ヒーローエリア
+   ========================================== */
+.food-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url(../img/yuusyoku1.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.food-hero-title {
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 5);
+}
+
+/* ==========================================
+  コンセプトメッセージ領域
+   ========================================== */
+.food-concept {
+  padding: 0 0 100px 0;
+  text-align: center;
+}
+
+.food-concept-text {
+  font-size: 15px;
+  line-height: 2.3;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.food-concept-text p {
+  margin-bottom: 2.5rem;
+}
+
+.food-concept-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+  料亭・お食事処 案内セクション（弥武景 庵）
+   ========================================== */
+.food-ryotei-section {
+  padding-bottom: 120px;
+}
+
+.food-ryotei-inner {
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  overflow: hidden;
+  /*画像を上下目に広げる */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.food-ryotei-img-box {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  position: relative; /* 画像を重ねる基準点 */
+  background-color: #111; /* チラつき防止 */
+}
+
+.food-ryotei-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out; /* 1.5秒かけてじわっと切り替わる */
+  z-index: 1;
+}
+
+/* 現在表示する画像だけ不透明にする */
+.food-ryotei-img-box img.visible {
+  opacity: 1;
+  z-index: 2;
+}
+
+.food-ryotei-text-box {
+  padding: 50px 60px;
+  background-color: #ffffff;
+  height: 100%; /* 高さをFlexboxいっぱいに維持 */
+}
+
+.food-ryotei-subtitle {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-gold);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.food-ryotei-title {
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin-bottom: 25px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.3);
+  padding-bottom: 12px;
+}
+
+.food-ryotei-title-kana {
+  font-size: 15px;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.food-ryotei-desc {
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 0.05em;
+  color: var(--ryokan-black);
+  margin-bottom: 30px;
+}
+
+/* 営業時間枠のレイアウト */
+.food-time-info-table {
+  border-top: 1px solid #efefef;
+  margin-bottom: 20px;
+}
+
+.food-time-row {
+  display: flex;
+  border-bottom: 1px solid #efefef;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.food-time-label {
+  width: 80px;
+  font-weight: 500;
+  color: var(--ryokan-black);
+  display: flex;
+  align-items: center;
+}
+
+.food-time-value {
+  flex: 1;
+  color: #444;
+}
+
+.food-time-note {
+  font-size: 12px;
+  color: var(--ryokan-gold);
+  margin-left: 5px;
+}
+
+.food-ryotei-alert {
+  font-size: 12.5px;
+  color: var(--ryokan-red);
+  margin: 0;
+}
+
+/* ==========================================
+  新・朝食 ＆ 夕食セクション (縦活かしスプリット型)
+   ========================================== */
+.food-menu-section {
+  padding-bottom: 120px;
+}
+
+.food-split-row {
+  min-height: 520px;
+  background-color: #ffffff;
+}
+
+.food-text-col {
+  background-color: #ffffff;
+  padding: 50px 60px;
+  color: var(--ryokan-black);
+}
+
+.food-vertical-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.food-menu-sub-title {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.4);
+  padding-bottom: 15px;
+  line-height: 1.6;
+}
+
+.food-menu-vertical-desc {
+  writing-mode: vertical-rl;
+  text-combine-upright: digits 2;
+  font-family: var(--ryokan-font-serif);
+  height: 280px;
+  margin-left: auto;
+}
+
+.food-menu-main-title {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--ryokan-gold);
+  margin-left: 20px;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.food-menu-vertical-desc p {
+  font-size: 14px;
+  line-height: 5;
+  letter-spacing: 0.08em;
+  color: var(--ryokan-black);
+  margin: 0;
+  text-align: justify;
+}
+
+.food-split-img-box {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.food-split-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+}
+
+/* ==========================================
+  Vue.js フェードトランジション用
+   ========================================== */
+.food-fade-enter-active,
+.food-fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.food-fade-enter,
+.food-fade-leave-to {
+  opacity: 0;
+}
+
+/* ==========================================
+  地酒・ペアリングセクション スタイル
+   ========================================== */
+.food-drink-section {
+  padding-bottom: 120px;
+}
+
+.food-drink-header {
+  margin-bottom: 60px;
+}
+
+.food-drink-subtitle {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-gold);
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.food-drink-title {
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.food-drink-lead {
+  font-size: 14px;
+  line-height: 2;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* カード全体のデザイン */
+.food-drink-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  height: 100%;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.food-drink-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.food-drink-card-img {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+.food-drink-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.food-drink-card-body {
+  padding: 35px 40px;
+}
+
+.food-drink-card-body h3 {
+  font-size: 18px;
+  color: var(--ryokan-black);
+  margin-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.food-drink-card-body p {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.food-drink-price {
+  font-size: 13px;
+  color: var(--ryokan-gold);
+  font-weight: 600;
+  display: block;
+  border-top: 1px dashed #efefef;
+  padding-top: 15px;
+}
+
+/* スマホ用調整 */
+@media (max-width: 767px) {
+  .food-drink-section {
+    padding-bottom: 80px;
+  }
+  .food-drink-header {
+    margin-bottom: 40px;
+  }
+  .food-drink-title {
+    font-size: 20px;
+  }
+  .food-drink-card-img {
+    height: 200px;
+  }
+  .food-drink-card-body {
+    padding: 25px 20px;
+  }
+}
+
+/* ==========================================
+  料理長紹介・挨拶セクション (横長配置)
+   ========================================== */
+.food-chef-section {
+  padding-bottom: 120px;
+}
+
+.food-chef-inner {
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  overflow: hidden;
+}
+
+.food-chef-image-box {
+  background-color: var(--ryokan-white);
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(221, 188, 117, 0.2);
+  overflow: hidden;
+}
+
+.food-chef-image-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.food-chef-text-box {
+  background-color: var(--ryokan-white);
+  padding: 50px 60px;
+}
+
+.food-chef-subtitle {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-gold);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.food-chef-title {
+  font-size: 22px;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  margin-bottom: 30px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.3);
+  padding-bottom: 12px;
+}
+
+.food-chef-desc {
+  font-size: 13.5px;
+  line-height: 2.2;
+  letter-spacing: 0.08em;
+  color: var(--ryokan-black);
+}
+
+.food-chef-name {
+  font-weight: 500;
+  color: var(--ryokan-red);
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================
+  スクロール連動アニメーション
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+  レスポンシブ微調整 (タブレット・スマホ対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .food-chef-image-box {
+    height: 400px;
+  }
+  .food-chef-text-box {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .food-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .food-hero-title {
+    font-size: 24px;
+  }
+  .food-concept {
+    padding-bottom: 60px;
+  }
+  .food-concept-text {
+    font-size: 14px;
+    line-height: 2.1;
+  }
+  .food-menu-section {
+    padding-bottom: 80px;
+  }
+  .food-split-row {
+    min-height: auto;
+  }
+  .food-text-col {
+    padding: 35px 20px;
+  }
+  .food-menu-sub-title {
+    font-size: 14px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(221, 188, 117, 0.3);
+  }
+
+  .food-ryotei-inner {
+    display: block;
+  }
+  .food-ryotei-img-box {
+    height: 300px;
+    min-height: 300px;
+  }
+  .food-ryotei-text-box {
+    padding: 35px 20px;
+  }
+  .food-ryotei-title {
+    font-size: 20px;
+  }
+  .food-time-row {
+    flex-direction: column;
+    padding: 12px 0;
+  }
+  .food-time-label {
+    margin-bottom: 5px;
+  }
+
+  /* スマホ時は横書きを戻す */
+  .food-menu-vertical-desc {
+    writing-mode: horizontal-tb;
+    height: auto;
+    margin-left: 0;
+  }
+  .food-menu-main-title {
+    font-size: 22px;
+    margin-left: 0;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--ryokan-gold);
+    padding-left: 10px;
+    border-bottom: none;
+  }
+  .food-menu-vertical-desc p {
+    line-height: 1.8;
+  }
+  .food-split-img-box {
+    min-height: 300px;
+  }
+
+  .food-chef-section {
+    padding-bottom: 80px;
+  }
+  .food-chef-image-box {
+    height: 300px;
+    border-right: none;
+    border-bottom: 1px solid rgba(221, 188, 117, 0.2);
+  }
+  .food-chef-text-box {
+    padding: 30px 20px;
+  }
+  .food-chef-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .food-chef-desc {
+    font-size: 13px;
+    line-height: 2;
+  }
+}

@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+/* ==========================================
+  contact.html & contact_complete.html 専用
+   ========================================== */
+
+.contact-page-wrapper {
+  font-family: var(--ryokan-font-serif);
+}
+
+/* ヒーロー見出し */
+.contact-page-title {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  margin-bottom: 15px;
+}
+
+.contact-page-subtitle {
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0.05em;
+}
+
+/* フォーム外枠 */
+.contact-form-inner,
+.contact-card {
+  max-width: 800px;
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* 必須ラベル */
+.contact-required {
+  font-size: 11px;
+  background-color: var(--ryokan-red);
+  color: #ffffff;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+  font-family: sans-serif;
+}
+
+/* 入力パーツ */
+.contact-input,
+.contact-textarea {
+  border-radius: 0;
+  border: 1px solid #cccccc;
+  padding: 10px 12px;
+  font-family: sans-serif;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: var(--ryokan-gold);
+  box-shadow: 0 0 0 0.25rem rgba(221, 188, 117, 0.15);
+}
+
+/* 送信ボタン（エンジ色ベース） */
+.contact-submit-button,
+.contact-home-button {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  padding: 14px 45px;
+  border-radius: 0;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.contact-submit-button:hover,
+.contact-home-button:hover {
+  background-color: #611200;
+  color: var(--ryokan-white);
+}
+
+.contact-notice-list {
+  font-size: 13px;
+  color: #555;
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.contact-notice-list li {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.contact-notice-list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+}
+
+.tel-faq-box {
+  background-color: #f7f6f4;
+  border: 1px solid #e5e2dc;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step-bar {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 13px;
+  color: #999;
+}
+
+.step-bar .active {
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+.required-star {
+  color: #b73b3b;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .contact-form-inner,
+  .contact-card {
+    padding: 30px 15px !important;
+  }
+  .contact-page-title {
+    font-size: 22px;
+  }
+  .contact-submit-button,
+  .contact-home-button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* 「よくある質問はこちら」ボタン */
+.contact-faq-link-button {
+  display: inline-block;
+  align-items: end;
+  background-color: transparent;
+  background-color: var(--ryokan-gold);
+  border: 1px solid var(--ryokan-gold);
+  font-size: 13.5px;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+  padding: 8px 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.contact-faq-link-button:hover {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black) !important;
+}
+
+.btn-custom-submit {
+  border-color: var(--ryokan-gold) !important;
+  color: #333 !important;
+  background-color: transparent;
+  background-color: var(--ryokan-gold);
+  border: 1px solid var(--ryokan-gold);
+  transition: all 0.3s ease;
+}
+
+.btn-custom-submit:hover {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black) !important;
+}

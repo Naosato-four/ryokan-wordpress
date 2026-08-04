@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+/* ==========================================
+  confirm.html 専用スタイル
+   ========================================== */
+
+.confirm-page {
+  background-color: var(--ryokan-white);
+  font-family: var(--ryokan-font-serif);
+}
+
+/* タイトルエリア */
+.confirm-page-title {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+}
+
+.confirm-page-subtitle {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.8;
+}
+
+/* テーブルラッパー制限 */
+.confirm-table-wrapper {
+  max-width: 850px;
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+/* テーブルスタイル */
+.confirm-summary-table {
+  margin-bottom: 0;
+}
+
+.confirm-summary-table th,
+.confirm-summary-table td {
+  padding: 18px 24px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--ryokan-gray-light);
+  vertical-align: middle;
+}
+
+.confirm-summary-table th {
+  width: 30%;
+  font-weight: 500;
+  background-color: rgba(253, 245, 222, 0.2); /* 琥珀クリームをうっすら背景に */
+  color: #333333;
+}
+
+.confirm-summary-table td {
+  width: 70%;
+  color: var(--ryokan-black);
+}
+
+/* 長文テキストの折り返し */
+.confirm-text-break {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 決定ボタン（エンジ色ベース） */
+.confirm-submit-button {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  padding: 15px 60px;
+  border-radius: 0;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.confirm-submit-button:hover {
+  background-color: #611200; /* トンマナを崩さない深めの赤 */
+  color: var(--ryokan-white);
+  box-shadow: 0 4px 12px rgba(137, 25, 0, 0.3);
+}
+
+/* 戻るリンク */
+.confirm-back-link {
+  font-size: 14px;
+  color: #666666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.confirm-back-link:hover {
+  color: var(--ryokan-gold);
+}
+
+/* ==========================================
+  追加：合計金額表示用スタイル
+   ========================================== */
+
+/* 合計金額の行を目立たせる */
+.confirm-total-row {
+  background-color: rgba(
+    253,
+    245,
+    222,
+    0.4
+  ) !important; /* 琥珀色の背景を少し濃く */
+  border-top: 2px solid var(--ryokan-gold);
+}
+
+.confirm-total-row th {
+  font-weight: 700;
+  color: var(--ryokan-black);
+}
+
+/* 金額の数字部分 */
+.confirm-price-digits {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ryokan-red); /* 琥珀のテーマカラーである深みのあるエンジ色 */
+  font-family: sans-serif; /* 数字はゴシック系が綺麗に見えるため */
+}
+
+/* 内訳テキスト */
+.confirm-price-breakdown {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* レスポンシブ設計 */
+@media (max-width: 768px) {
+  .confirm-summary-table th,
+  .confirm-summary-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  .confirm-summary-table th {
+    width: 40%;
+  }
+  .confirm-summary-table td {
+    width: 60%;
+  }
+  .confirm-submit-button {
+    width: 100%;
+    max-width: 340px;
+    padding: 14px 20px;
+  }
+}

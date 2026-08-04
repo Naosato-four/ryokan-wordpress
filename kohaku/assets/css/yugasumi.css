@@ -1,0 +1,630 @@
+@charset "UTF-8";
+
+/* ==========================================
+  TOPの画像
+   ========================================== */
+.bg-gara {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  object-position: bottom;
+}
+
+.keion-hero-inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+/* ==========================================
+  1. お部屋 ヒーローエリア
+   ========================================== */
+
+.keion-hero {
+  position: relative;
+  background-color: var(--ryokan-gray-light);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.keion-hero-sub {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(26, 26, 26, 0.6);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.keion-hero-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+}
+
+.keion-hero-kana {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.5);
+  margin-left: 5px;
+}
+
+/* ==========================================
+  2. 客室メイン紹介エリア（手動スライドショー）
+   ========================================== */
+.keion-detail-section {
+  padding-bottom: 90px;
+}
+
+/* 手動スライドショースタイル */
+.keion-slider-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+}
+
+.keion-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.keion-slider-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.keion-slider-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.keion-slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.keion-slider-image-placeholder {
+  background-color: var(--ryokan-gray-light);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keion-slider-placeholder-text {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+/* 左右操作ボタン */
+.keion-slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(26, 26, 26, 0.5);
+  border: none;
+  color: var(--ryokan-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.keion-slider-nav:hover {
+  background-color: var(--ryokan-red);
+}
+
+.keion-slider-nav.prev {
+  left: 15px;
+}
+
+.keion-slider-nav.next {
+  right: 15px;
+}
+
+/* インジケータードット */
+.keion-slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.keion-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(250, 250, 250, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.keion-slider-dot.active {
+  background-color: var(--ryokan-gold);
+}
+
+/* メイン右：テキスト詳細 */
+.keion-text-card {
+  padding: 10px 20px;
+}
+
+.keion-card-header {
+  border-bottom: 1px solid var(--ryokan-gold);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.keion-room-type {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-gold);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.keion-room-name {
+  font-size: 26px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--ryokan-black);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.keion-room-kana {
+  font-size: 13px;
+  color: rgba(26, 26, 26, 0.5);
+  margin-left: 12px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.keion-concept-box {
+  background-color: var(--ryokan-cream);
+  border-left: 3px solid var(--ryokan-gold);
+  padding: 20px 24px;
+  margin-bottom: 30px;
+}
+
+.keion-concept-text {
+  font-size: 14.5px;
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin: 0;
+}
+
+.keion-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+}
+
+.keion-specs li {
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 0;
+  display: flex;
+}
+
+.keion-specs li:last-child {
+  border-bottom: none;
+}
+
+.keion-spec-label {
+  font-weight: 700;
+  color: var(--ryokan-red);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.keion-btn-reserve {
+  display: inline-block;
+  background-color: var(--ryokan-black);
+  color: var(--ryokan-white);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  padding: 14px 45px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.keion-btn-reserve:hover {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+}
+
+/* ==========================================
+  追加：客室スペック詳細セクション（間取り・基本情報）
+   ========================================== */
+.keion-specs-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.keion-info-card {
+  background-color: var(--ryokan-cream);
+  border: 1px solid rgba(221, 188, 117, 0.35);
+  padding: 35px;
+  height: 100%;
+}
+
+.keion-info-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  border-bottom: 2px solid var(--ryokan-gold);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+.keion-info-group {
+  margin-bottom: 25px;
+}
+
+.keion-info-group:last-child {
+  margin-bottom: 0;
+}
+
+.keion-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  padding: 2px 10px;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.keion-info-table th {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ryokan-black);
+  padding: 6px 0;
+  width: 140px;
+}
+
+.keion-info-table td {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.85);
+  padding: 6px 0;
+}
+
+.keion-free-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.keion-free-services li {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ryokan-black);
+  display: flex;
+  align-items: center;
+}
+
+.keion-service-icon {
+  color: var(--ryokan-gold);
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* ==========================================
+  追加：備品・アメニティ詳細セクション
+   ========================================== */
+.keion-amenity-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.keion-amenity-title {
+  font-size: 24px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid var(--ryokan-gold);
+  padding-bottom: 4px;
+}
+
+.keion-amenity-intro-text {
+  font-size: 14px;
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 26, 0.8);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* 備品カードスタイル */
+.keion-amenity-card {
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  padding: 24px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.keion-amenity-card:hover {
+  border-color: var(--ryokan-gold);
+  transform: translateY(-2px);
+}
+
+.keion-amenity-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.keion-amenity-icon-wrap {
+  width: 32px;
+  height: 32px;
+  background-color: var(--ryokan-cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ryokan-red);
+  font-size: 14px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.keion-amenity-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  margin: 0;
+}
+
+.keion-amenity-item-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.75);
+  margin: 0;
+}
+
+/* ==========================================
+  3. 他の客室へのリンクエリア（メインを邪魔しないサイズ感）
+   ========================================== */
+.keion-other-rooms-section {
+  padding-bottom: 120px; /* 最後の余白調整 */
+}
+
+.keion-other-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.keion-other-title {
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.keion-other-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: var(--ryokan-gold);
+}
+
+.keion-other-card {
+  display: block;
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.15);
+  transition: all 0.3s ease;
+}
+
+.keion-other-card:hover {
+  border-color: var(--ryokan-gold);
+  transform: translateY(-3px);
+}
+
+.keion-other-image-box {
+  background-color: var(--ryokan-gray-light);
+  overflow: hidden;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.15);
+}
+
+.keion-other-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.keion-other-image-text {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.keion-other-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.keion-other-room-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+  color: var(--ryokan-black);
+}
+
+.keion-other-room-kana {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.keion-other-link-text {
+  font-size: 11px;
+  color: var(--ryokan-gold);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.keion-other-card,
+.keion-other-card:hover,
+.keion-other-room-name {
+  text-decoration: none !important;
+}
+
+/* ==========================================
+  スクロール連動フェードイン
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+  レスポンシブ微調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .keion-floorplan-img-wrap {
+    height: 320px;
+  }
+  .keion-slider-container {
+    height: 380px;
+  }
+  .keion-floorplan-box {
+    height: 320px;
+  }
+  .keion-info-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 750px) {
+  .keion-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .keion-hero-title {
+    font-size: 24px;
+  }
+  .keion-detail-section,
+  .keion-specs-section,
+  .keion-amenity-section,
+  .keion-other-rooms-section {
+    padding-bottom: 60px; /* 均等な縦の間隔調整 */
+  }
+  .keion-slider-container {
+    height: 250px;
+    margin-bottom: 25px;
+  }
+  .keion-text-card {
+    padding: 0 10px;
+  }
+  .keion-room-name {
+    font-size: 21px;
+  }
+  .keion-concept-box {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .keion-concept-text {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .keion-btn-reserve {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+  .keion-floorplan-box {
+    height: 250px;
+    margin-bottom: 25px;
+  }
+  .keion-free-services {
+    grid-template-columns: 1fr;
+  }
+  .keion-amenity-title {
+    font-size: 20px;
+  }
+  .keion-amenity-intro-text {
+    font-size: 13px;
+    line-height: 2;
+  }
+  .keion-other-image-box {
+    height: 120px;
+  }
+  .keion-other-info {
+    padding: 10px;
+  }
+  .keion-other-room-name {
+    font-size: 13px;
+  }
+}

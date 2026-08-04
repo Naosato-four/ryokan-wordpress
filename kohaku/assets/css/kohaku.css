@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+/* ==========================================
+コンセプトヒーローエリア (写真プレースホルダー) ========================================== */
+.kohaku-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url(../img/ryokangaikan.png);
+  background-size: cover;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 90px;
+}
+.kohaku-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+.kohaku-hero-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 5);
+}
+
+/* ==========================================
+コンセプトメッセージ ========================================== */
+.kohaku-concept {
+  margin-bottom: 90px;
+  text-align: center;
+}
+.kohaku-concept-text {
+  font-size: 15px;
+  line-height: 2.3;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-black);
+  max-width: 640px;
+  margin: 0 auto;
+}
+.kohaku-concept-text p {
+  margin-bottom: 2.5rem;
+}
+.kohaku-concept-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+各セクションカードリスト ========================================== */
+.kohaku-sections {
+  padding-bottom: 120px;
+}
+.kohaku-card-item {
+  margin-bottom: 60px;
+  background-color: var(--ryokan-white);
+  transition: all 0.3s ease;
+}
+.kohaku-card-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 写真のみを表示するカード (雪見風呂、周辺施設) */
+.kohaku-photo-only-card {
+  width: 100%;
+}
+.kohaku-photo-placeholder {
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(221, 188, 117, 0.25);
+  transition: all 0.4s ease;
+  width: 100%;
+}
+.kohaku-photo-placeholder:hover {
+  background-color: var(--ryokan-gray-medium);
+}
+.kohaku-photo-title {
+  font-size: 24px;
+  letter-spacing: 0.4em;
+  color: var(--ryokan-black);
+  font-weight: 500;
+  margin: 0;
+  padding-left: 0.4em;
+}
+.kohaku-photo-text {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.kohaku-photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+自動フェードスライドショー (竹灯籠) ========================================== */
+.kohaku-slideshow-container,
+.kohaku-slide-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+}
+.kohaku-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kohaku-slide.active {
+  opacity: 1;
+}
+.kohaku-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+詳細テキストカード ========================================== */
+.kohaku-text-card {
+  padding: 40px;
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.kohaku-text-card-title {
+  font-size: 22px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-black);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.kohaku-text-card-catch {
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-red);
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.kohaku-text-card-desc {
+  font-size: 13.5px;
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+  color: var(--ryokan-black);
+  margin: 0;
+  text-align: justify;
+}
+
+/* ===================================================
+VueのTransition機能（フェードアニメーション） =================================================== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+/* ==========================================
+スクロール連動フェードイン ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+レスポンシブ微調整 (中間幅・最小幅対応) ========================================== */
+.min-h-250 {
+  min-height: 250px;
+}
+@media (max-width: 1000px) {
+  .kohaku-photo-placeholder {
+    height: 320px;
+  }
+  .kohaku-slideshow-container,
+  .kohaku-slide {
+    min-height: 320px;
+  }
+  .kohaku-text-card {
+    padding: 30px;
+  }
+  .kohaku-text-card-catch {
+    font-size: 14px;
+  }
+}
+@media (max-width: 750px) {
+  .kohaku-hero {
+    min-height: 220px;
+  }
+  .kohaku-hero-title {
+    font-size: 22px;
+  }
+  .kohaku-concept {
+    padding: 70px 0;
+  }
+  .kohaku-card-item {
+    margin-bottom: 45px;
+  }
+  .kohaku-photo-placeholder {
+    height: 260px;
+  }
+  .kohaku-slideshow-container {
+    min-height: 260px;
+  }
+  .kohaku-text-card {
+    padding: 25px 20px;
+  }
+  .kohaku-text-card-title {
+    font-size: 19px;
+    margin-bottom: 12px;
+  }
+  .kohaku-text-card-catch {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+  .kohaku-text-card-desc {
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+  .min-h-250 {
+    min-height: 200px;
+  }
+}

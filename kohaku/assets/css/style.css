@@ -1,0 +1,478 @@
+@charset "UTF-8";
+
+/* ==========================================
+  CSS変数の定義 (旅館「琥珀」専用の和カラー)
+   ========================================== */
+:root {
+  --ryokan-gold: #ddbc75;
+  --ryokan-cream: #fff1c8;
+  --ryokan-red: #871900;
+  --ryokan-white: #fafafa;
+  --ryokan-black: #1a1a1a;
+  --ryokan-gray-light: #efefef;
+  --ryokan-gray-medium: #d9d9d9;
+  --ryokan-font-serif: "Shippori Mincho B1", serif;
+}
+
+/* ==========================================
+  全体基本設定
+   ========================================== */
+body.ryokan-body {
+  background-image: url("../img/htmlbg.png");
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  font-family: var(--ryokan-font-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--ryokan-black);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--ryokan-gold);
+}
+
+/* ==========================================
+  メディア幅制限の調整 (1200px / 1000px / 750px / 375px)
+   ========================================== */
+.ryokan-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* スマートフォン幅 (375px) */
+@media (min-width: 375px) {
+  .ryokan-container {
+    max-width: 100%;
+  }
+}
+
+/* 最小幅 (750px) */
+@media (min-width: 750px) {
+  .ryokan-container {
+    max-width: 710px;
+  }
+}
+
+/* 中間幅 (1000px) */
+@media (min-width: 1000px) {
+  .ryokan-container {
+    max-width: 960px;
+  }
+}
+
+/* 最大幅 (1200px) */
+@media (min-width: 1200px) {
+  .ryokan-container {
+    max-width: 1200px;
+  }
+}
+
+/* ==========================================
+  ヘッダーデザイン
+   ========================================== */
+.ryokan-header {
+  background-color: rgba(250, 250, 250, 0.96);
+  border-bottom: 1px solid rgba(221, 188, 117, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* スクロール時の追従スタイル */
+.ryokan-header.scrolled {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.ryokan-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  transition: height 0.3s ease;
+}
+
+/* ロゴ構成 */
+.ryokan-logo-link img {
+  height: 70px;
+  margin-top: -8px;
+}
+
+.ryokan-logo-sub {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--ryokan-black);
+  display: block;
+  margin-bottom: 30px;
+}
+
+.ryokan-logo-main {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  display: block;
+}
+
+/* ナビゲーションメニュー */
+.ryokan-header-right-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.ryokan-nav {
+  display: flex;
+  align-items: center;
+  margin-right: 22px;
+}
+
+.ryokan-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.ryokan-nav-list li {
+  margin-right: 22px;
+}
+
+.ryokan-nav-list a {
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  padding: 10px 0;
+  position: relative;
+  font-weight: 500;
+}
+
+.ryokan-nav-list a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--ryokan-gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.ryokan-nav-list a:hover::after {
+  width: 100%;
+}
+
+.ryokan-nav-list li:last-child {
+  margin-right: 0;
+}
+
+/* 予約ボタン */
+.ryokan-btn-reserve {
+  background-color: var(--ryokan-black);
+  color: var(--ryokan-white);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  padding: 11px 26px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.ryokan-btn-reserve:hover {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+}
+
+/* スマホ用ハンバーガーメニューボタン */
+.ryokan-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--ryokan-black);
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* ==========================================
+  フッター
+   ========================================== */
+.ryokan-footer {
+  background-color: var(--ryokan-cream);
+  padding: 40px 0 20px;
+  color: var(--ryokan-black);
+  border-top: 1px solid rgba(221, 188, 117, 0.3);
+}
+
+.ryokan-footer .ryokan-container {
+  max-width: 100% !important;
+  width: 100%;
+  padding-left: 110px; /* 画面端との余白（数値はお好みで調整） */
+  padding-right: 110px; /* 画面端との余白（数値はお好みで調整） */
+}
+
+/* 画面サイズが小さくなった時のスマホ対応（余白の調整） */
+@media (max-width: 768px) {
+  .ryokan-footer .ryokan-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.ryokan-footer-top {
+  border-bottom: 1px solid rgba(221, 188, 117, 0.25);
+  padding-bottom: 60px;
+}
+/* フッターロゴ */
+.ryokan-footer-brand-area img {
+  max-width: 100%;
+  height: auto;
+  margin-top: -30px;
+}
+
+/* 住所 */
+.ryokan-footer-address {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(26, 26, 26, 0.85);
+  margin-bottom: 4px;
+}
+
+/* SNS */
+.ryokan-footer-sns {
+  display: flex;
+  gap: 10px;
+}
+
+.ryokan-footer-sns-link {
+  display: block;
+  font-size: 2rem;
+  color: var(--ryokan-black);
+  transition: color 0.3s ease;
+}
+
+.ryokan-footer-sns-link:hover {
+  color: var(--ryokan-gold);
+}
+
+.ryokan-footer-brand-area {
+  padding: 0;
+  align-items: center;
+  text-align: center;
+}
+.ryokan-footer-sub-catch {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.ryokan-footer-nav-inner {
+  width: 100%;
+  max-width: 320px;
+}
+
+.ryokan-footer-nav-area {
+  display: block;
+  align-items: flex-start;
+  margin-left: -300px; /*住所とメニューの幅調整 */
+}
+
+.ryokan-footer-menu-col {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--ryokan-gold); /* 各列の左側に線を配置 */
+  padding-left: 60px; /* 線と文字の間の余白 */
+}
+
+.ryokan-footer-menu-link {
+  display: block;
+  color: var(--ryokan-black);
+  text-decoration: none;
+  /* 画像に見られる文字のドロップシャドウの再現 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  transition:
+    color 0.3s,
+    transform 0.3s;
+  margin-bottom: 1.8rem;
+}
+
+.ryokan-footer-menu-link:last-child {
+  margin-bottom: 0;
+}
+
+.ryokan-footer-menu-link:hover {
+  color: #555555;
+  text-decoration: none;
+}
+
+.ryokan-footer-contact p {
+  margin-top: 0;
+  padding-top: 0;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.ryokan-footer-info-area {
+  display: flex;
+  flex-direction: column;
+  margin-left: -200px; /*変更点*/
+}
+
+.ryokan-footer-contact p {
+  margin: 0;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* コピーライト */
+.ryokan-footer-copy {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+}
+
+/* ==========================================
+  スマホ用ドロワーメニュー (Vue連動)
+   ========================================== */
+.ryokan-mobile-nav {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 90px);
+  background-color: var(--ryokan-white);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.ryokan-mobile-nav.is-active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ryokan-mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.ryokan-mobile-nav-list li {
+  margin-bottom: 25px;
+}
+
+.ryokan-mobile-nav-list li:last-child {
+  margin-bottom: 0;
+}
+
+.ryokan-mobile-nav-list a {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--ryokan-black);
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.ryokan-mobile-nav-list a:hover {
+  color: var(--ryokan-gold);
+}
+
+/* ==========================================
+  アニメーション用のエフェクト
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+  レスポンシブ崩れ防止の調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .ryokan-nav-item li {
+    margin-right: 14px;
+  }
+  .ryokan-nav-link {
+    font-size: 12px;
+  }
+  .ryokan-btn-reserve {
+    padding: 8px 18px;
+    font-size: 11px;
+  }
+  .ryokan-logo-main {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 750px) {
+  .ryokan-header-inner {
+    height: 75px;
+  }
+  .ryokan-header.scrolled .ryokan-header-inner {
+    height: 65px;
+  }
+  .ryokan-mobile-nav {
+    top: 75px;
+    height: calc(100vh - 75px);
+  }
+  .ryokan-nav {
+    display: none; /* 通常ナビゲーション非表示 */
+  }
+  .ryokan-mobile-toggle {
+    display: block; /* ハンバーガー表示 */
+    margin-left: 15px;
+  }
+  .ryokan-hero {
+    min-height: 400px;
+    padding: 70px 15px;
+  }
+  .ryokan-hero-title-main {
+    font-size: 22px;
+  }
+  .ryokan-concept {
+    padding: 80px 0;
+  }
+  .ryokan-feature-card {
+    height: 260px;
+  }
+  .ryokan-feature-title {
+    font-size: 20px;
+  }
+  .ryokan-footer-logo-area {
+    margin-bottom: 30px;
+  }
+}

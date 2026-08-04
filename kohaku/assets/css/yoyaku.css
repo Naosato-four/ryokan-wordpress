@@ -1,0 +1,699 @@
+@charset "UTF-8";
+
+/* ==========================================================
+画面切り替え時のフェードイン・アウト（和モダンな緩やかな速度）
+   ========================================================== */
+
+/* 変化にかける時間を指定（0.4秒かけてフワッとさせます） */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.75s ease;
+}
+
+/* 画面が消える瞬間、および現れる前の最初の状態（透明度ゼロ） */
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ryokan-font-serif) !important;
+  background-image: url("../img/htmlbg.png"); /* 画像の保存先フォルダ（パス）に合わせて調整してください */
+  background-repeat: repeat; /* 画像を縦横に敷き詰める */
+  background-attachment: scroll;
+}
+
+/* ==========================================================
+  1. 共通レイアウト / 予約ページ共通
+========================================================== */
+
+/* -------------------------
+  ページタイトル
+------------------------- */
+.yoyaku-hero {
+  padding: 80px 100px 20px;
+  background: #efebe2;
+  border-bottom: 1px solid #ddd;
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #3f3024;
+    margin-bottom: 20px;
+  }
+  p {
+    max-width: 700px;
+    color: #666;
+    line-height: 2;
+  }
+}
+/* スマホ・タブレット（768px以下）用の見せ方  */
+@media (max-width: 768px) {
+  .yoyaku-hero {
+    padding: 50px 20px 20px;
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  }
+}
+
+/* 1つ目の世界観を反映したフォントとコンテナ */
+.booking-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+/* 1つ目のyoyaku-form-wrapperのカード型スタイルを統合 */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: #fff;
+  padding: 60px;
+  border: 1px solid var(--ryokan-gray-medium);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/*  フォームカレンダーの表示サイズ　
+/* ==========================================================
+  jQuery UI Datepicker（カレンダー）のサイズ拡大（PC専用）
+   ========================================================== */
+
+/* ==========================================================
+カレンダー内で自動選択される日付（初期候補日）の「青色」を和モダンに塗り替える
+   ========================================================== */
+
+/* 1. 現在選択されている（アクティブな）日付の背景色を「青」から「琥珀のエンジ色」に変える */
+#ui-datepicker-div .ui-state-active,
+#ui-datepicker-div .ui-datepicker-calendar .ui-state-active {
+  background: var(--ryokan-red);
+  color: var(--ryokan-white); /* 文字色は白で見やすく */
+  border: 1px solid var(--ryokan-red);
+  text-shadow: none;
+}
+
+/* 2. マウスを乗せたとき（ホバー時）や、注目（フォーカス）している時の色も綺麗に整える */
+#ui-datepicker-div .ui-state-hover,
+#ui-datepicker-div .ui-state-focus {
+  background: rgba(221, 188, 117, 0.2); /* 薄いゴールドベージュ調 */
+  color: var(--ryokan-black);
+  border: 1px solid var(--ryokan-gold);
+}
+
+/* 3. 今日（当日）のマス目の枠線や背景が青く目立っている場合のリセット（お好みで調整） */
+#ui-datepicker-div .ui-datepicker-today .ui-state-default {
+  background: rgba(221, 188, 117, 0.5);
+  border: 1px solid var(--ryokan-gold); /* 今日の枠線をゴールドに */
+  font-weight: bold;
+}
+
+/* 💻 画面幅が769px以上（PC・タブレット）のときだけ適用 */
+@media (min-width: 769px) {
+  #ui-datepicker-div {
+    font-size: 120%; /* 🔥 PCではデフォルトの1.35倍の大きさに！ */
+    width: 380px; /* 横幅もゆったりとしたサイズに固定 */
+    padding: 14px;
+    border: 1px solid var(--ryokan-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 日付のマス目を大きく、押しやすくする */
+  #ui-datepicker-div .ui-state-default {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* 曜日表示（月火水…）のフォントサイズ調整 */
+  #ui-datepicker-div .ui-datepicker-calendar th {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  /* ヘッダー（〇〇年〇月）の余白 */
+  #ui-datepicker-div .ui-datepicker-header {
+    padding: 8px 0;
+  }
+}
+
+/* 📱 スマホ（768px以下）のときは、はみ出さないように標準サイズに維持 */
+@media (max-width: 768px) {
+  #ui-datepicker-div {
+    font-size: 100%; /* スマホ画面にぴったり収まるサイズ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ==========================================================
+  2. 予約フォームテンプレート
+========================================================== */
+
+/* フォーム人数 */
+.people {
+  margin-bottom: 1.5rem;
+}
+.people span {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* スマホ閲覧時は縦並びにして崩れを防ぐ */
+@media (max-width: 600px) {
+  .date-inputs-inline {
+    flex-direction: column;
+    gap: 8px;
+    max-width: 100%;
+  }
+}
+
+/* 1つ目の下部区切り線デザインをセクションに適用 */
+.form-section {
+  display: flex;
+  align-items: flex-start;
+  border: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ryokan-gray-light); /* 共通グレー(ライト)で境界線を表現 */
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+}
+
+/* 1つ目のラベルカラーと太さを適用 */
+.form-label {
+  width: 200px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ryokan-black); /* 視認性の高い共通の黒を適応 */
+  padding-top: 10px;
+  display: block;
+}
+
+/* 【変更】必須マークのスタイルを共通カラーの赤をベースにしたバッジへ */
+.form-label-required::after {
+  content: "必須";
+  color: #fff;
+  background: var(--ryokan-red); /* 共通カラーの「赤」を適応 */
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 1つ目の四角くシャープなインプットスタイルを適用 */
+.form-control {
+  width: 100%;
+  max-width: 450px;
+  padding: 10px;
+  border: 1px solid var(--ryokan-gray-medium); /* 共通グレー(中) */
+  border-radius: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+  min-height: 48px;
+  transition: 0.3s;
+}
+
+/* フォーカス時はゴールド（ryokan-gold）のグロウ効果へ変更して統一感をプラス */
+.form-control:focus {
+  border-color: var(--ryokan-gold);
+  box-shadow: 0 0 0 0.2rem rgba(221, 188, 117, 0.2); /* ゴールドの透過グロウ */
+  outline: none;
+}
+
+.select-control {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* 1つ目のテキストエリアスタイルを適用 */
+.form-textarea {
+  width: 100%;
+  max-width: 450px;
+  height: 180px;
+  padding: 10px;
+  border: 1px solid var(--ryokan-gray-medium);
+  border-radius: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+.form-textarea:focus {
+  border-color: var(--ryokan-gold);
+  box-shadow: 0 0 0 0.2rem rgba(221, 188, 117, 0.2);
+  outline: none;
+}
+
+.radio-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.radio-label {
+  font-size: 13px;
+  color: var(--ryokan-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* アレルギー欄 */
+.allergy {
+  background-color: var(--ryokan-white);
+  padding: 16px;
+  border: 1px solid var(--ryokan-gray-light);
+  margin-top: 8px;
+
+  p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  label {
+    margin-right: 1rem;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  /* 💡 チェックを入れたときの色を琥珀のテーマカラー（エンジ色やゴールド）にする */
+  accent-color: var(--ryokan-black) !important;
+
+  /* マウスを乗せたときにポインタを指マークにして押しやすくする */
+  cursor: pointer;
+}
+
+/* バリデーションエラーのテキストも共通の赤に統一 */
+.error-text {
+  color: var(--ryokan-red);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 元のボタン */
+.btn-submit {
+  background-color: var(--ryokan-red);
+  color: #fff;
+  border: 1px solid transparent; /* 先に透明な枠線を敷いてガタつきを防止 */
+  border-radius: 0;
+  padding: 16px 60px;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* すべての変化を0.3秒で滑らかに */
+}
+
+/* 改修後のホバー */
+.btn-submit:hover {
+  color: #fff;
+  background-color: var(--ryokan-black);
+  border-color: var(--ryokan-black);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.15); /* 浮き上がりに合わせた繊細な影 */
+}
+
+/* ==========================================================
+  3. 確認画面テンプレート
+========================================================== */
+
+/* --- 確認画面全体のレイアウト調整 --- */
+.booking-container h2 {
+  font-size: 24px;
+  color: var(--ryokan-black);
+  border-bottom: 2px solid var(--ryokan-red); /* アンダーラインを共通の赤に */
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.confirm-lead {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+/* --- テーブルスタイルの刷新 --- */
+.confirm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+  background-color: #ffffff;
+  /* 1つ目のテーブルラッパー制限のデザイン（薄いゴールド線とシャドウ）を反映 */
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.confirm-table th,
+.confirm-table td {
+  padding: 18px 24px; /* 1つ目の余白設定に微調整 */
+  font-size: 15px; /* 1つ目のフォントサイズ */
+  border-bottom: 1px solid var(--ryokan-gray-light);
+  vertical-align: middle;
+}
+
+/* 左側の項目名カラム */
+.confirm-table th {
+  width: 30%;
+  background-color: rgba(
+    253,
+    245,
+    222,
+    0.2
+  ); /* 1つ目の「琥珀クリームをうっすら背景に」を適用 */
+  color: #333333; /* 1つ目の文字色 */
+  font-weight: 500; /* 1つ目の太さ */
+}
+
+/* 右側の入力値カラム */
+.confirm-table td {
+  color: var(--ryokan-black); /* 1つ目のカラーに変更 */
+  /* 要望・ご質問などの長文テキスト対応として1つ目の折り返し指定を統合 */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* --- 合計金額の行を特別扱いに --- */
+.confirm-table .total-row th,
+.confirm-table .total-row td {
+  background-color: rgba(
+    253,
+    245,
+    222,
+    0.4
+  ) !important; /* 1つ目の「琥珀色の背景を少し濃く」を適用 */
+  border-top: 2px solid var(--ryokan-gold);
+  border-bottom: 1px solid var(--ryokan-gray-light);
+  font-size: 15px;
+}
+
+.confirm-table .total-row th {
+  font-weight: 700;
+  color: var(--ryokan-black);
+}
+
+.confirm-table .total-row td {
+  color: var(--ryokan-black);
+}
+
+/* 2つ目のstrong要素（金額）に対して1つ目の「.confirm-price-digits」のテイストを完全移植 */
+.confirm-table .total-row strong {
+  color: var(--ryokan-red);
+  font-size: 22px;
+  font-weight: 700;
+  font-family: sans-serif; /* 数字が綺麗に見えるゴシック系 */
+}
+
+/* --- ボタンエリアの配置換え --- */
+.confirm-buttons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* 修正するボタン */
+.btn-back {
+  background-color: #ffffff;
+  color: #666666; /* 1つ目のback-linkカラーに統一 */
+  border: 1px solid var(--ryokan-gray-medium);
+  padding: 14px 40px;
+  font-size: 14px; /* 1つ目の文字サイズ */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 1つ目のtransition指定に統一 */
+  min-width: 160px;
+  text-align: center;
+}
+
+.btn-back:hover {
+  background-color: var(--ryokan-gray-light);
+  border-color: var(--ryokan-gold);
+  color: var(--ryokan-gold); /* 1つ目のホバー時のゴールドカラーを適用 */
+}
+
+/* 予約確定ボタン（2つ目の構造に1つ目の「.confirm-submit-button」を完全マージ） */
+.btn-submit {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  border: none;
+  border-radius: 0;
+  padding: 15px 60px; /* 1つ目のパディング */
+  font-size: 16px; /* 1つ目のサイズ */
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  text-align: center;
+}
+
+.btn-submit:hover {
+  background-color: #611200; /* 1つ目の深みのある赤 */
+  color: var(--ryokan-white);
+  box-shadow: 0 4px 12px rgba(137, 25, 0, 0.3); /* 1つ目のシャドウ */
+  transform: none; /* 1つ目の挙動に合わせてジャンプを無効化 */
+}
+
+/* -------------------------
+レスポンシブ対応（1つ目のブレイクポイントでの細部変更を2つ目に内包）
+------------------------- */
+@media (max-width: 991px) {
+  .booking-form {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1つ目の「max-width: 768px」で指定されていたレスポンシブのパディング・幅比率をマージ */
+  .confirm-table th,
+  .confirm-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  .confirm-table th {
+    width: 40%;
+  }
+  .confirm-table td {
+    width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-form {
+    padding: 30px 20px;
+  }
+
+  .form-section {
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
+  .form-label {
+    width: 100%;
+    padding-bottom: 8px;
+  }
+  .form-control,
+  .form-textarea {
+    max-width: 100%;
+  }
+
+  /* 確認画面テーブルのレスポンシブ化 */
+  .confirm-table th,
+  .confirm-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .confirm-table th {
+    background-color: rgba(
+      253,
+      245,
+      222,
+      0.2
+    ); /* スマホ時も琥珀クリームの背景を維持 */
+    padding-top: 12px;
+    padding-bottom: 6px;
+    border-bottom: none;
+  }
+  .confirm-table td {
+    padding-top: 6px;
+    padding-bottom: 14px;
+  }
+  .confirm-buttons {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .btn-back {
+    width: 100%;
+  }
+  .btn-submit {
+    width: 100%;
+    max-width: 100%; /* 横いっぱいに広げる */
+    padding: 14px 20px;
+  }
+}
+
+/* ==========================================================
+  4. 完了画面テンプレート
+========================================================== */
+
+.complete-page-wrapper {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* 進行状況インジケーター（ステップバー） */
+.complete-step-bar {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+  opacity: 0.6;
+}
+
+.complete-step-item {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.complete-step-active {
+  font-weight: 700;
+  color: var(--ryokan-red);
+  opacity: 1;
+  border-bottom: 1px solid var(--ryokan-red);
+}
+
+.complete-step-separator {
+  font-size: 11px;
+  color: var(--ryokan-gold);
+  padding: 0 15px;
+}
+
+/* 完了メッセージカード外枠 */
+.complete-card {
+  max-width: 750px;
+  background-color: #ffffff;
+  border: 1px solid rgba(221, 188, 117, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* チェックマークアイコン */
+.complete-icon-wrap {
+  font-size: 64px;
+  color: var(--ryokan-gold);
+}
+
+/* メインタイトル */
+.complete-main-title {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ryokan-black);
+}
+
+/* 説明テキスト */
+.complete-message-text {
+  font-size: 15px;
+  line-height: 2;
+  color: #444444;
+}
+
+/* 注意事項等を入れる内側のボックス */
+.complete-info-box {
+  background-color: rgba(
+    253,
+    245,
+    222,
+    0.3
+  ); /* 琥珀色ベースのうすい和紙風背景 */
+  border-left: 3px solid var(--ryokan-gold);
+  max-width: 620px;
+}
+
+.complete-info-box p {
+  font-size: 14px;
+  color: var(--ryokan-black);
+}
+
+.complete-notice-list {
+  margin-top: 8px;
+}
+
+.complete-notice-list li {
+  font-size: 13.5px;
+  color: #555555;
+  line-height: 1.7;
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+/* トップへ戻るボタン（エンジ色ベース） */
+.complete-home-button {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  padding: 14px 50px;
+  border-radius: 0;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 4px 15px rgba(135, 25, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.complete-home-button:hover {
+  background-color: #611200;
+  color: var(--ryokan-white);
+  box-shadow: 0 6px 20px rgba(135, 25, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .complete-card {
+    padding: 35px 20px !important;
+  }
+  .complete-main-title {
+    font-size: 20px;
+  }
+  .complete-message-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .complete-home-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+  }
+}

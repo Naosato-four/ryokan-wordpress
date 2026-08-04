@@ -1,0 +1,351 @@
+/* ==========================================
+   CSS変数の定義 (style.cssの変数名プレフィックス --ryokan- と完全に共通化)
+   ========================================== */
+:root {
+  --ryokan-gold: #ddbc75;
+  --ryokan-cream: #fdf5de;
+  --ryokan-red: #871900;
+  --ryokan-white: #fafafa;
+  --ryokan-black: #1a1a1a;
+  --ryokan-gray-light: #efefef;
+  --ryokan-gray-medium: #d9d9d9;
+  --ryokan-font-serif: "Noto Serif JP", serif;
+}
+
+/* ==========================================
+   全体基本設定
+   ========================================== */
+body.kankou-body {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  font-family: var(--ryokan-font-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   レスポンシブ幅制限の定義
+   ========================================== */
+.kankou-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* スマホ幅 (375px) */
+@media (min-width: 375px) {
+  .kankou-container {
+    max-width: 100%;
+  }
+}
+
+/* 最小幅 (750px) */
+@media (min-width: 750px) {
+  .kankou-container {
+    max-width: 710px;
+  }
+}
+
+/* 中間幅 (1000px) */
+@media (min-width: 1000px) {
+  .kankou-container {
+    max-width: 960px;
+  }
+}
+
+/* 最大幅 (1200px) */
+@media (min-width: 1200px) {
+  .kankou-container {
+    max-width: 1200px;
+  }
+}
+
+/* ==========================================
+   1. 観光案内 ヒーローエリア
+   ========================================== */
+.kankou-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url(../img/visite.jpg);
+  background-position: center;
+  background-color: var(--ryokan-gray-light);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.kankou-hero-sub {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(26, 26, 26, 0.6);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.kankou-hero-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ryokan-black);
+  margin: 0;
+  padding-left: 0.35em;
+}
+
+/* ==========================================
+   2. コンセプトテキスト領域
+   ========================================== */
+.kankou-intro-section {
+  padding-bottom: 90px; /* 均等な縦の間隔 */
+}
+
+.kankou-intro-text {
+  font-size: 15px;
+  line-height: 2.3;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kankou-intro-text p {
+  margin-bottom: 1.5rem;
+}
+
+.kankou-intro-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   3. カテゴリフィルター ＆ 観光地グリッドエリア
+   ========================================== */
+.kankou-list-section {
+  padding-bottom: 120px; /* 最後の均等な余白調整 */
+}
+
+/* フィルターボタンナビ */
+.kankou-filter-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.kankou-filter-btn {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  border: 1px solid var(--ryokan-gold);
+  font-size: 13.5px;
+  letter-spacing: 0.15em;
+  padding: 8px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.kankou-filter-btn:hover {
+  background-color: var(--ryokan-cream);
+  border-color: var(--ryokan-gold);
+}
+
+.kankou-filter-btn.active {
+  background-color: var(--ryokan-red);
+  color: var(--ryokan-white);
+  border-color: var(--ryokan-red);
+}
+
+/* 観光カードスタイル */
+.kankou-spot-card {
+  background-color: var(--ryokan-white);
+  border: 1px solid rgba(221, 188, 117, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* フレックスで内部を縦並び化 */
+  transition: all 0.3s ease;
+}
+
+.kankou-spot-card:hover {
+  border-color: var(--ryokan-gold);
+  transform: translateY(-3px);
+}
+
+/* 写真プレースホルダー */
+.kankou-spot-image-box {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  border-bottom: 1px solid rgba(221, 188, 117, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.kankou-spot-image-box::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.kankou-spot-card:hover .kankou-spot-image-box {
+  background-color: var(--ryokan-gray-medium);
+}
+
+.kankou-spot-card:hover .kankou-spot-image-box::before {
+  opacity: 1;
+}
+
+.kankou-spot-image-text {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+/* カードテキスト領域 */
+.kankou-spot-text-box {
+  padding: 24px;
+  /* flex-grow: 1; */
+  display: flex;
+  flex-direction: column; /* 内部パーツのフレックス制御 */
+}
+
+.kankou-spot-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.kankou-spot-category {
+  font-size: 12px;
+  font-weight: 700;
+  background-color: var(--ryokan-cream);
+  color: var(--ryokan-red);
+  padding: 2px 10px;
+  letter-spacing: 0.1em;
+}
+
+.kankou-spot-access {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.kankou-spot-name {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--ryokan-black);
+  margin-bottom: 14px;
+}
+
+.kankou-spot-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.8);
+  margin: 0 0 16px 0;
+  text-align: justify;
+  flex-grow: 1; /* 各スポットでのテキスト量に関わらず、ボタンを最下部へ均等配置する設定 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* 【追加】「詳しく見る」ボタンのデザイン */
+.kankou-spot-btn {
+  display: inline-block;
+  background-color: var(--ryokan-black);
+  color: var(--ryokan-white);
+  border: 1px solid var(--ryokan-black);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  padding: 10px 24px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.kankou-spot-btn:hover {
+  background-color: var(--ryokan-white);
+  color: var(--ryokan-black);
+  border-color: var(--ryokan-black);
+}
+
+/* ==========================================
+   スクロール連動フェードイン
+   ========================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   レスポンシブ微調整 (中間幅・最小幅対応)
+   ========================================== */
+@media (max-width: 1000px) {
+  .kankou-spot-image-box {
+    height: 200px;
+  }
+}
+
+@media (max-width: 750px) {
+  .kankou-hero {
+    min-height: 200px;
+    margin-bottom: 60px;
+  }
+  .kankou-hero-title {
+    font-size: 24px;
+  }
+  .kankou-intro-section,
+  .kankou-list-section {
+    padding-bottom: 60px; /* 均等な縦の間隔調整 */
+  }
+  .kankou-intro-text {
+    font-size: 14px;
+    line-height: 2.1;
+  }
+  .kankou-filter-btn {
+    font-size: 12.5px;
+    padding: 6px 18px;
+  }
+  .kankou-spot-image-box {
+    height: 180px;
+  }
+  .kankou-spot-text-box {
+    padding: 20px;
+  }
+  .kankou-spot-name {
+    font-size: 16px;
+  }
+  .kankou-spot-desc {
+    font-size: 12.5px;
+    margin-bottom: 12px;
+  }
+  .kankou-spot-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+}
