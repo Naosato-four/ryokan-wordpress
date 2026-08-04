@@ -1,0 +1,2 @@
+# ryokan-wordpress
+架空の旅館をテーマに制作したWordPressサイト。HTML/CSSで制作したデザインをWordPress化し、PHPによるテーマ開発を行いました。
