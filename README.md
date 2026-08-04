@@ -18,7 +18,7 @@
 - WordPress
 - Google AI Studio
 - ChatGPT
-- Google Gemini
+- Google Gemini（画像もGeminiで作成しております）
 - Copilot
 
 ## 実装内容
@@ -48,6 +48,6 @@
 - カスタム投稿タイプを活用した客室・宿泊プラン管理
 - SEOを意識したコンテンツ設計
 
-- ## テーマ名
+## テーマ名
 
 WordPressテーマ名：**kohaku**
